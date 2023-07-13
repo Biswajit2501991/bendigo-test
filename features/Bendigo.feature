@@ -12,7 +12,7 @@ Scenario: Check Banker url is launched successfully
     Then User Click on Continue to Apply
 
     Given User is on getting started section tab
-    Then user Enter Test Data Preferred Credit Limit $10000
+    Then user Enter Test Data Preferred Credit Limit 10000
     Then User select purpose as general purpose use
     Then user click on Continue
 
