@@ -8,40 +8,40 @@ Given(/^User should see the Bandigo Bank home page$/, async () => {
 });
 
 When(/^User hover over Banking on home screen$/, async () => {
-    await ('#banking').click;
-    browser.pause(2000);
-    const selector = '//*[@id="BendigoBankHeaderConfig-16378-re-mega-menu-desc-menu-row-menu-item-banking"]';
-    const element = await $(selector);
-    await $(element).click();
+    // await ('#banking').click;
+    // browser.pause(2000);
+    // const selector = $('//*[@id="BendigoBankHeaderConfig-16378-re-mega-menu-desc-menu-row-menu-item-banking"]');
+    // //const element = await $(selector);
+    // await $(selector).click();
 
 });
 
 Then(/^User should see the following link Bank Account Credit card Personal Loans and Travel and International Payments and select the credit cards$/, async () => {
 
 
-    const selector2 = '//button[@aria-label="3"]';
-    const element2 = await $(selector2);
-    await $(element2).click();
+    // const selector2 = $('//button[@aria-label="3"]');
+    // //const element2 = await $(selector2);
+    // browser.pause(3000);
+    // await $(selector2).click();
 
 
 });
 
 
 
-// Was not able to lunch 
+// 
 Given(/^User should Click on apply now for Bendigo Bright® Credit Card$/, async () => {
     await browser.url('https://www.bendigobank.com.au/personal/credit-cards/');
-    browser.pause(5000);
-    // const selector3 = '$(document.querySelector("#Button-232952")])';
-    // const element4 = await $(selector3);
-    const selector2 = '#Button-232952';
-    const element3 = await $(selector2);
-    element3.scrollIntoView();
-    await element3.waitForClickable({ timeout: 10000 });
+    browser.pause(2000);
 
-    await element3.click();
+    const applyNow = await $('//*[@id="Button-232952"]');
+    //const element3 = await $(selector2);
 
+    await applyNow.scrollIntoView();
+    await applyNow.waitForClickable({ timeout: 5000 });
+    await applyNow.click();
 });
+
 
 
 When(/^User see Check my eligibility screen is shown$/, async () => {
@@ -55,10 +55,11 @@ Then(/^User Click on Continue to Apply$/, async () => {
 
     try {
         const continueToApply = await $('//div[@class="col-12 text-left"]//a[@id="Button-237631"]');
-        await continueToApply.waitForExist({ timeout: 5000 });
-        continueToApply.scrollIntoView();
-        await continueToApply.click();
-
+        // continueToApply.scrollIntoView();
+        await continueToApply.waitForExist({ timeout: 10000 });
+        //continueToApply.scrollIntoView();
+        await continueToApply.waitForClickable({ timeout: 10000 });
+        // await continueToApply.click();
         browser.pause(3000);
 
     } catch (error) {
@@ -70,38 +71,48 @@ Then(/^User Click on Continue to Apply$/, async () => {
 
 Given(/^User is on getting started section tab$/, async () => {
     browser.pause(3000);
-    await browser.switchWindow("applynow.bendigobank")
-    browser.pause(5000);
-    // await browser.switchWindow("Product Details");
-    // await inputElement.setValue("10000");
 
+    Given(/^User is on getting started section tab$/, async () => {
+        browser.pause(3000);
+        await browser.switchWindow("applynow.bendigobank")
+        browser.pause(5000);
+        // await browser.switchWindow("Product Details");
+        // await inputElement.setValue("10000");
+
+    });
 });
+
+// browser.pause(3000);
+// await browser.switchWindow("applynow.bendigobank")
+// browser.pause(5000);
+// // await browser.switchWindow("Product Details");
+// // await inputElement.setValue("10000");
 
 
 Then(/^user Enter Test Data Preferred Credit Limit 10000/, async () => {
-    const element = await $('//*[@id="creditLimitAmountInput"]');
-    element.scrollIntoView();
-    await element.waitForDisplayed();
-    // await element.waitForEnabled();
-    await element.setValue("10000");
+    const CreditLimit = await $('//input[@type="text"]');
+    //  await CreditLimit.scrollIntoView();
+    // await CreditLimit.waitForDisplayed();
+    await CreditLimit.setValue("10000");
     await browser.pause(5000);
-
 });
+
+
 
 
 Then(/^User select purpose general purpose use$/, async () => {
     const selectGenPurpose = await $('(//button[normalize-space()="General purpose use"])[1]');
-    await selectGenPurpose.waitForClickable(); // Wait for the button to be clickable
-    await selectGenPurpose.click(); // Click on the button
+    //await selectGenPurpose.waitForClickable(); // Wait for the button to be clickable
+    await selectGenPurpose.click();
     await browser.pause(3000);
 });
 
 
 Then(/^user click on Continue$/, async () => {
     const clickContinue = await $('//button[@name="contBtn"]');
-    await clickContinue.waitForClickable(); // Wait for the button to be clickable
-    await clickContinue.click(); // Click on the button
-    await browser.pause(5000); // Pause for 5 seconds (5000 milliseconds)
+    await clickContinue.waitForClickable();
+    await clickContinue.click();
+    await browser.pause(5000);
 });
 
 
@@ -145,8 +156,8 @@ Then(/^User select no for next two question$/, async () => {
 Then(/^User click on Continue button$/, async () => {
     const clickOnContinue = await $('button[name="contBtn"]');
     // await clickOnContinue.waitForClickable(); // Wait for the button to be clickable
-    await clickOnContinue.click(); // Click on the button
-    await browser.pause(5000); // Pause for 5 seconds
+    await clickOnContinue.click();
+    await browser.pause(5000);
 });
 
 
@@ -174,9 +185,9 @@ Then(/^User Select Yes from the question$/, async () => {
 Then(/^User select Continue button$/, async () => {
     const TimeClickOnContinue = await $('//button[contains(text(),"Continue")]');
     TimeClickOnContinue.scrollIntoView();
-    // await TimeClickOnContinue.waitForClickable(); // Wait for the button to be clickable
-    await TimeClickOnContinue.click(); // Click on the button
-    await browser.pause(5000); // Pause for 5 seconds
+
+    await TimeClickOnContinue.click();
+    await browser.pause(5000);
 });
 
 
