@@ -1,4 +1,6 @@
 export const config = {
+
+
     //
     // ====================
     // Runner Configuration
@@ -85,7 +87,7 @@ export const config = {
     // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
     // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
     // gets prepended directly.
-    baseUrl: 'https://www.bendigobank.com.au/',
+    baseUrl: 'https://www.google.com/',
     //
     // Default timeout for all waitFor* commands.
     waitforTimeout: 10000,
@@ -130,8 +132,6 @@ export const config = {
     cucumberOpts: {
         // <string[]> (file/dir) require files before executing features
         require: ['./features/step-definitions/*.js'],
-        // Updated hardcoded, so that it run Js file present in step defination
-        //require: ['./steps/*.ts'],
         // <boolean> show full backtrace for errors
         backtrace: false,
         // <string[]> ("extension:module") require files with the given EXTENSION after requiring MODULE (repeatable)

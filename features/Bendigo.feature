@@ -13,8 +13,16 @@ Scenario: Check Banker url is launched successfully
 
     Given User is on getting started section tab
     Then user Enter Test Data Preferred Credit Limit 10000
-    Then User select purpose as general purpose use
+    Then User select purpose general purpose use
     Then user click on Continue
 
+    Given User is on application details page
+    Then User select single relationship status
+    Then User select no for next two question
+    Then User click on Continue button
+
+    Given User validate Time and Eligibility screen
+    Then User Select Yes from the question 
+    Then User select Continue button
 
     
