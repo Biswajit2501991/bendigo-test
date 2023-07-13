@@ -4,27 +4,97 @@ import { Given, When, Then } from '@wdio/cucumber-framework';
 Given(/^User should see the Bandigo Bank home page$/, async () => {
 
     await browser.url('https://www.bendigobank.com.au/');
+
 });
 
 When(/^User hover over Banking on home screen$/, async () => {
     await ('#banking').click;
+    browser.pause(2000);
+    const selector = '//*[@id="BendigoBankHeaderConfig-16378-re-mega-menu-desc-menu-row-menu-item-banking"]';
+    const element = await $(selector);
+    await $(element).click();
+
 });
 
 Then(/^User should see the following link Bank Account Credit card Personal Loans and Travel and International Payments and select the credit cards$/, async () => {
 
+
+    const selector2 = '//button[@aria-label="3"]';
+    const element2 = await $(selector2);
+    await $(element2).click();
+
+
 });
 
-Given(/^User is on credit card home screen$/, async () => {
+
+
+
+
+// Was not able to lunch 
+Given(/^User should Click on apply now for Bendigo Bright® Credit Card$/, async () => {
     await browser.url('https://www.bendigobank.com.au/personal/credit-cards/');
+    browser.pause(5000);
+    // const selector3 = '$(document.querySelector("#Button-232952")])';
+    // const element4 = await $(selector3);
+    const selector2 = '#Button-232952';
+    const element3 = await $(selector2);
+
+    await element3.waitForClickable({ timeout: 10000 });
+    await element3.click();
+
 });
 
-When(/^User select select Apply now for  Bendigo Bright® Credit Card$/, async () => {
-    const selector = '//*[@id="react_0HMS20HR5AJH0"]/div/div[2]/div/div/div/div[4]/div/div/div[3]/div/div[1]/div/div/div[2]/a';
-    await $$xpath(selector)[0].click();
-});
 
-Then(/^User should see the following link Bank Account Credit card Personal Loans and Travel and International Payments and select the credit cards$/, async () => {
+When(/^User see Check my eligibility screen is shown$/, async () => {
+    const title = $('.title');
+    expect(title).toBeDisplayed();
 
 });
+
+Then(/^User Click on Continue to Apply$/, async () => {
+
+    try {
+        const continueToApply = await $('//a[contains(@aria-label, "Apply now for a bendigo bright credit card")]');
+        await continueToApply.waitForExist({ timeout: 5000 });
+        await continueToApply.click();
+        browser.pause(3000);
+        await browser.switchWindow("applynow.bendigobank")
+
+    } catch (error) {
+        console.error('Error:', error.message);
+    }
+
+});
+
+
+Given(/^User is on getting started section tab$/, async () => {
+
+
+
+
+    // // await browser.switchWindow("Product Details");
+    const inputElement = ("//input[@id='creditLimitAmountInput']");
+    await inputElement.waitForExist({ timeout: 10000 });
+    await inputElement.setValue("10000");
+
+    // applynow.bendigobank
+
+
+});
+
+Then(/^user Enter Test Data Preferred Credit Limit $10000$/, async () => {
+    // const inputElement = await $("//input[@type='text']");
+    // await inputElement.waitForExist({ timeout: 10000 });
+    // await inputElement.setValue("10000");
+});
+
+Then(/^User select purpose as general purpose use$/, async () => {
+
+});
+
+Then(/^user click on Continue$/, async () => {
+
+});
+
 
 
