@@ -8,21 +8,43 @@ Given(/^User should see the Bandigo Bank home page$/, async () => {
 });
 
 When(/^User hover over Banking on home screen$/, async () => {
-    // await ('#banking').click;
+    await ('#banking').click;
+    browser.pause(2000);
+
+    // const BankAcount = await $('//a[@id="BendigoBankHeaderConfig-16378-re-mega-menu-desc-mega-menu-row-title-0-bank-accounts"]');
+    // const CreditCard = await $('//a[@id="BendigoBankHeaderConfig-16378-re-mega-menu-desc-mega-menu-row-title-1-credit-cards"]');
+    // const PersonalLoans = await $("//a[@id='BendigoBankHeaderConfig-16378-re-mega-menu-desc-mega-menu-row-title-2-personal-loans']");
+    // const TravelPay = await $("//a[@id='BendigoBankHeaderConfig-16378-re-mega-menu-desc-mega-menu-row-title-3-travel-and-international-payments']")
+
+    // const bankAccount = await BankAcount.getText();
+    // expect(bankAccount.includes('Bank accounts')).toBe(true);
     // browser.pause(2000);
-    // const selector = $('//*[@id="BendigoBankHeaderConfig-16378-re-mega-menu-desc-menu-row-menu-item-banking"]');
-    // //const element = await $(selector);
-    // await $(selector).click();
+
+    // const creditCardText = await CreditCard.getText();
+    // expect(creditCardText.includes('Credit cards')).toBe(true);
+    // browser.pause(2000);
+
+    // const personalLoansText = await PersonalLoans.getText();
+    // expect(personalLoansText.includes('Personal loans')).toBe(true);
+    // browser.pause(2000);
+
+    // const travelPayText = await TravelPay.getText();
+    // expect(travelPayText.includes('Travel and international payments')).toBe(true);
+    // browser.pause(2000);
+
+    // await CreditCard.click();
+    // browser.pause(2000);
+
 
 });
 
 Then(/^User should see the following link Bank Account Credit card Personal Loans and Travel and International Payments and select the credit cards$/, async () => {
 
 
-    // const selector2 = $('//button[@aria-label="3"]');
-    // //const element2 = await $(selector2);
-    // browser.pause(3000);
-    // await $(selector2).click();
+    const selector2 = await $('//button[@aria-label="3"]');
+    //const element2 = await $(selector2);
+    browser.pause(3000);
+    await $(selector2).click();
 
 
 });
@@ -34,12 +56,13 @@ Given(/^User should Click on apply now for Bendigo Bright® Credit Card$/, async
     await browser.url('https://www.bendigobank.com.au/personal/credit-cards/');
     browser.pause(2000);
 
-    const applyNow = await $('//*[@id="Button-232952"]');
+    const applyNow = await $('(//a[@id="Button-232952"])[1]');
     //const element3 = await $(selector2);
 
     await applyNow.scrollIntoView();
     await applyNow.waitForClickable({ timeout: 5000 });
     await applyNow.click();
+
 });
 
 
@@ -57,9 +80,8 @@ Then(/^User Click on Continue to Apply$/, async () => {
         const continueToApply = await $('//div[@class="col-12 text-left"]//a[@id="Button-237631"]');
         // continueToApply.scrollIntoView();
         await continueToApply.waitForExist({ timeout: 10000 });
-        //continueToApply.scrollIntoView();
         await continueToApply.waitForClickable({ timeout: 10000 });
-        // await continueToApply.click();
+        await continueToApply.click();
         browser.pause(3000);
 
     } catch (error) {
@@ -69,18 +91,17 @@ Then(/^User Click on Continue to Apply$/, async () => {
 });
 
 
+
+
 Given(/^User is on getting started section tab$/, async () => {
-    browser.pause(3000);
 
-    Given(/^User is on getting started section tab$/, async () => {
-        browser.pause(3000);
-        await browser.switchWindow("applynow.bendigobank")
-        browser.pause(5000);
-        // await browser.switchWindow("Product Details");
-        // await inputElement.setValue("10000");
+    await browser.switchWindow("applynow.bendigobank")
+    browser.pause(5000);
+    // await browser.switchWindow("Product Details");
+    // browser.pause(3000);
 
-    });
 });
+
 
 // browser.pause(3000);
 // await browser.switchWindow("applynow.bendigobank")
@@ -125,21 +146,21 @@ Given(/^User is on application details page$/, async () => {
 });
 
 Then(/^User select single relationship status$/, async () => {
-    //const relationshipStatus = await $('//select[@name="maritalStatus"]');
+    const relationshipStatus = await $('//select[@name="maritalStatus"]/option[2]');
     // const selectSingle = await $('//option[@value="object:507"]');
-    // await relationshipStatus.click();
+    await relationshipStatus.click();
     // await selectSingle.click();
-    // await browser.pause(5000);
+    await browser.pause(3000);
 
-    let relationshipStatus = $$('//select[@name="maritalStatus"]');
-    for (var i = 0; i < relationshipStatus.length; i++) {
-        // console.log(status[i].getText()
-        if (relationshipStatus[i].getText() == "Single") {
-            relationshipStatus[i].click();
-            break;
-        }
+    // let relationshipStatus = $$('//select[@name="maritalStatus"]');
+    // for (var i = 0; i < relationshipStatus.length; i++) {
+    //     // console.log(status[i].getText()
+    //     if (relationshipStatus[i].getText() == "Single") {
+    //         relationshipStatus[i].click();
+    //         break;
+    //     }
 
-    }
+    // }
 });
 
 Then(/^User select no for next two question$/, async () => {
@@ -235,13 +256,13 @@ Given(/^User Validate income details section is displaying$/, async () => {
 });
 
 When(/^User select the Empy Status As Casual$/, async () => {
-    const selectEmpStatus = await $('//select[@name="employmentStatus"]');
-    const selectEmpAsCasual = await $('//option[@label="Casual"]');
+    const selectEmpStatus = await $('//select[@name="employmentStatus"]/option[6]');
+    //const selectEmpAsCasual = await $('//option[@label="Casual"]');
     await expect(selectEmpAsCasual).toBeDisplayed();
     selectEmpStatus.click();
     await browser.pause(2000);
-    selectEmpAsCasual.click();
-    await browser.pause(2000);
+    // selectEmpAsCasual.click();
+    // await browser.pause(2000);
 
 });
 
