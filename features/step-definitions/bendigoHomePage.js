@@ -80,7 +80,7 @@ Given(/^User is on getting started section tab$/, async () => {
 
 Then(/^user Enter Test Data Preferred Credit Limit 10000/, async () => {
     const element = await $('//*[@id="creditLimitAmountInput"]');
-    element.scrollIntoView();
+    //element.scrollIntoView();
     await element.waitForDisplayed();
     await element.waitForEnabled();
     await element.setValue("10000");
