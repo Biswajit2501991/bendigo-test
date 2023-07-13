@@ -36,8 +36,9 @@ Given(/^User should Click on apply now for Bendigo Bright® Credit Card$/, async
     // const element4 = await $(selector3);
     const selector2 = '#Button-232952';
     const element3 = await $(selector2);
-
+    element3.scrollIntoView();
     await element3.waitForClickable({ timeout: 10000 });
+
     await element3.click();
 
 });
@@ -45,6 +46,7 @@ Given(/^User should Click on apply now for Bendigo Bright® Credit Card$/, async
 
 When(/^User see Check my eligibility screen is shown$/, async () => {
     const title = $('.title');
+    title.scrollIntoView();
     expect(title).toBeDisplayed();
 
 });
@@ -54,6 +56,7 @@ Then(/^User Click on Continue to Apply$/, async () => {
     try {
         const continueToApply = await $('//div[@class="col-12 text-left"]//a[@id="Button-237631"]');
         await continueToApply.waitForExist({ timeout: 5000 });
+        continueToApply.scrollIntoView();
         await continueToApply.click();
 
         browser.pause(3000);
@@ -77,6 +80,7 @@ Given(/^User is on getting started section tab$/, async () => {
 
 Then(/^user Enter Test Data Preferred Credit Limit 10000/, async () => {
     const element = await $('//*[@id="creditLimitAmountInput"]');
+    element.scrollIntoView();
     await element.waitForDisplayed();
     await element.waitForEnabled();
     await element.setValue("10000");
