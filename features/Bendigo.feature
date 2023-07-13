@@ -25,4 +25,32 @@ Scenario: Check Banker url is launched successfully
     Then User Select Yes from the question 
     Then User select Continue button
 
+    Given User is on Branch Details screen
+    Then User Enter location As Melbourne and Click on Find
+    Then User Select Clifton Hill Option and Click Contine
+
+
+    Given User Validate income details section is displaying
+    When User select the Empy Status As Casual
+    Then User Input Occupation As Professional screen shoul display
+    Then User select Social Professionals
+    Then User Validate Income Screen is displaying
+    Then User Enter amount as 20000
+    Then user Select frequency as Anually
+    Then User Click on contine button
+
+    Given User Expenses section is displaying
+    Then User enter amount as 6000
+    Then user select payment frequency as Monthly
+    Then User click on Cancel buttion
+    Then User Click on Yes
+    Then User validate Your application with Ref no has been cancelled message
+
+
+
+
+
+
+
+
     
