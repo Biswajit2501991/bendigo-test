@@ -53,7 +53,10 @@ export const config = {
     // https://saucelabs.com/platform/platform-configurator
     //
     capabilities: [{
-        browserName: 'chrome'
+        browserName: 'chrome',
+        // browserName: {chromiumedge: '0.29.1'},
+        //browserName: 'firefox'
+
     }],
 
     //
