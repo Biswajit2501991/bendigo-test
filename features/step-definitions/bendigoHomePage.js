@@ -56,7 +56,7 @@ Given(/^User should Click on apply now for Bendigo Bright® Credit Card$/, async
     await browser.url('https://www.bendigobank.com.au/personal/credit-cards/');
     browser.pause(2000);
 
-    const applyNow = await $('(//a[@id="Button-232952"])[1]');
+    const applyNow = await $('(//a[@id="Button-232952"])');
     //const element3 = await $(selector2);
 
     await applyNow.scrollIntoView();
@@ -107,7 +107,7 @@ Given(/^User is on getting started section tab$/, async () => {
 
 Then(/^user Enter Test Data Preferred Credit Limit 10000/, async () => {
     const CreditLimit = await $('//input[@type="text"]');
-
+    await browser.pause(10000);
     await CreditLimit.setValue('10000');
     await browser.pause(5000);
 });
@@ -379,9 +379,11 @@ Then(/^User validate Your application with Ref no has been cancelled message$/, 
     const headingElement = await $('//a[contains(text(),"You can apply for other loans here")]');
     const headingText = await headingElement.getText();
 
-    const expectedMessage = `Your application ${refValue} has been cancelled\nYou can apply for other loans here`;
+    const expectedMessage = `Your application ${refValue} has been cancelled`;
     expect(fullMessage).toContain(expectedMessage);
     await browser.pause(2000);
+    const ExpectUrlMessage = `You can apply for other loans here`
+    expect(headingText).toContain(ExpectUrlMessage);
 });
 
 

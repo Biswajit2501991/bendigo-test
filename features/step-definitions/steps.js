@@ -20,8 +20,3 @@ Then(/^I should see a flash message saying (.*)$/, async (message) => {
     await expect(SecurePage.flashAlert).toHaveTextContaining(message);
 });
 
-Given(/^I am on the the Bendigo Bank website(\w+) page$/, async (page) => {
-    await pages[page].open()
-});
-
-
