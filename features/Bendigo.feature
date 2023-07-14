@@ -1,6 +1,6 @@
 Feature: Launch Bendigo Prod URL
 
-Scenario: Check Banker url is launched successfully
+Scenario: End to End Testing
 
     Given User should see the Bandigo Bank home page
     When User hover over Banking on home screen
